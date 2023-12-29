@@ -27,10 +27,10 @@ Xpt1 s_ a out pass_transistor
 Xpt2 s b out pass_transistor
 .ends
 
-.subckt d_latch clk in out
-Xinv2 out neg inverter
-Xinv1 temp out inverter
+.subckt d_latch in clk out
+Xinv1 out neg inverter
 Xmux neg in clk temp mux
+Xinv2 temp out inverter
 .ends
 
 Xn a clk out d_latch
