@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Virtual labs</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+	<div class="columns mt-2 is-variable is-1 is-centered is-flex is-flex-wrap-wrap">
+		<div class="v-tabs">
+			<ul>
+				<li class="is-active">
+					<a>
+						<span>D Latch</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="columns is-centered">
+		<div class="column">
+			<div class="v-collapsible-instruction-container v-instruction-container">
+				<div class="v-collapsible is-size-5" id="task-description">
+					Instructions
+				</div>
+				<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+					<ul style="list-style: disc;">
+						<li>The Spice Code is partially filled and divided into code blocks.
+						</li>
+						<li>Drag and drop these code blocks to arrange them in the correct order for the code to work.
+						</li>
+						<li>Complete the partially filled code blocks</li>
+						<li>Once you have completed the code and rearranged the blocks as required, click on
+							validate. This will give the report and input-output graphs upon a successful code.</li>
+						<li>Clicking on reset will reset the experiment and you can start your practice again.</li>
+						<li>You can find the MOSFET model text file ("PTM_45nm.txt") in a separate pop-up window upon
+							clicking "View PTM_45nm.txt"</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="columns is-variable is-1 is-centered is-flex is-flex-wrap-wrap my-0">
+		<div id="start" class="column is-1-desktop is-2-tablet is-3-mobile center-content">
+			<button class="v-button" onclick="ValidateCode()">Validate</button>
+		</div>
+		<div id="restart" class="column is-1-desktop is-2-tablet is-3-mobile center-content">
+			<button class="v-button" onclick="viewModelFile()">View PTM_45nm.txt</button>
+		</div>
+		<div id="restart" class="column is-1-desktop is-2-tablet is-3-mobile center-content">
+			<button class="v-button" onclick="location.reload()">Reset</button>
+		</div>
+	</div>
+	<div class="columns is-variable is-5 is-centered is-flex is-flex-wrap-wrap">
+		<div class="column is-9-desktop is-10-tablet is-11-mobile center-content">
+			<div class="v-datalist-container">
+				<div class="v-datalist-title">
+					Spice Code
+				</div>
+				<div id="container">
+					<ul class="drag-sort-enable custom-list" id="spice-code">
+						<li id="1">
+							<span class="comment" id="first_line"></span>
+							<p>.include <input type="text" id="file-name"
+									placeholder="Enter the model file name to be included"></p><br>
+							<p><span class="comment">* Parameter Declarations </span></p>
+							<p>.PARAM supply=1.1<br>
+								.PARAM Lmin=45nm<br>
+								.PARAM Wmin=45nm<br>
+								.PARAM Wp={2*Wmin}<br>
+								.global vdd gnd
+							</p>
+						</li>
+						<li id="2">
+							<span class="comment">* Netlist statement to define voltage source </span>
+							<p><input type="text" id="voltage-source-name"
+									placeholder="Give a name to the voltage source">&nbsp;
+								<select id="voltage-positive-terminal-selector">
+									<option value="" disabled selected>Select positive terminal node</option>
+									<option value="vdd">vdd</option>
+									<option value="gnd">gnd</option>
+									<option value="0">0</option>
+									<option value="1.1">1.1</option>
+								</select>
+								<select id="voltage-negative-terminal-selector">
+									<option value="" disabled selected>Select negative terminal node</option>
+									<option value="vdd">vdd</option>
+									<option value="gnd">gnd</option>
+									<option value="0">0</option>
+									<option value="1.1">1.1</option>
+								</select>
+							</p>
+						</li>
+						<li id="3">
+							<p>
+								<span class="comment">* Defining the inverter subcircuit </span>
+								<br>
+								.subckt inverter in out<br>
+								MP1 out in vdd vdd pmos w={Wmin} L={Lmin}<br>
+								Mn1 out in 0 0 NMOS W={Wmin} L={Lmin}<br>
+								.ends inverter<br><br>
+
+								<span class="comment">* Defining the pass transistor subcircuit </span>
+								<br>
+								.subckt pass_transistor control in out<br>
+								Xinv control not inverter<br>
+								MP1 out not in vdd pmos w={Wp} L={Lmin}<br>
+								MN1 out control in 0 nmos W={Wmin} L={Lmin}<br>
+								.ends<br><br>
+
+								<span class="comment">* Defining the 2:1 MUX subcircuit </span>
+								<br>
+								.subckt mux a b s out<br>
+								Xinvs s s_ inverter<br>		
+								Xpt1 s_ a out pass_transistor<br>
+								Xpt2 s b out pass_transistor<br>
+								.ends
+							</p>
+						</li>
+						<li id="4">
+							<span class="comment">* Define sub-circuit</span>
+							<p>
+								.subckt&nbsp;
+								<input type="text" id="subckt-name" placeholder="Give a name to the subcircuit">&nbsp;
+								<input type="text" id="subckt-in1-name" placeholder="Give a name to input 1">&nbsp;
+								<input type="text" id="subckt-in2-name" placeholder="Give a name to input 2">&nbsp;
+								<input type="text" id="subckt-out-name" placeholder="Give a name to the output"><br>
+
+								<input type="text" id="inv-call1-instance-name" placeholder="Give an instance name to the inverter call">&nbsp;
+								<input type="text" id="inv-call1-input" placeholder="Input Node">&nbsp;
+								<input type="text" id="inv-call1-output" placeholder="Output Node">&nbsp; inverter<br>
+
+								<input type="text" id="inv-call2-instance-name" placeholder="Give an instance name to the inverter call">&nbsp;
+								<input type="text" id="inv-call2-input" placeholder="Input Node">&nbsp;
+								<input type="text" id="inv-call2-output" placeholder="Output Node">&nbsp; inverter<br>		
+														
+								<input type="text" id="mux-instance-name" placeholder="Give an instance name to the mux call">&nbsp;
+								<input type="text" id="mux-a-input" placeholder="I0">&nbsp;
+								<input type="text" id="mux-b-input" placeholder="I1">&nbsp;
+								<input type="text" id="mux-s-input" placeholder="control signal">&nbsp;
+								<input type="text" id="mux-output" placeholder="output">&nbsp; mux<br>
+
+								
+								.ends 
+							</p>
+						</li>
+						<li id="5">
+							<span class="comment">*netlist statement to call the gate sub circuit</span>
+							<span class="comment">*gate inputs are 'a', 'b' and the gate output is 'out'</span>
+							<p>
+								<input type="text" id="gate-call-instance-name"
+									placeholder="Give an instance name to the latch component">&nbsp;
+								<input type="text" id="gate-call-input1" placeholder="Input Node 1">&nbsp;
+								<input type="text" id="gate-call-input2" placeholder="Input Node 2">&nbsp;
+								<input type="text" id="gate-call-output" placeholder="Output Node">&nbsp;
+								<input type="text" id="gate-call-subckt-name"
+									placeholder="Enter the sub circuit name to be called">
+							</p>
+						</li>
+						<li id="6">
+							<span class="comment">*Declaring Input Waveform</span><br>
+							.PARAM trfin=10p<br>
+							.PARAM t1 = 10n<br>
+							.PARAM t2 = 20n<br>
+							.PARAM t3 = 30n<br>
+							.PARAM t4 = 40n<br>
+
+							<span class="comment">*Transient Analysis</span><br>
+							.tran 6p 100n<br><br>
+
+							<span class="comment">
+								*Use below line for input (declaring input pwl Waveform)<br>
+								*'V1' is the PWL source name, 'a', 'clk' are the input names
+							</span><br>
+							V1 a 0 PWL (0 0 't1' 0 't2' 0 't2+trfin' 'supply' 't3' 'supply' 't4' 'supply')<br>
+							V2 clk 0 PWL (0 0 't1' 0 't1+trfin' 'supply' 't2' 'supply' 't3' 'supply' 't3+trfin' 0 't4' 0 )
+
+						</li>
+						<li id="7">
+							<span class="comment">*Control Statements</span><br>
+							.control<br>
+							run<br><br>
+							<span class="comment">*plots inputs</span>
+							<br>
+							plot v(a) v(clk)<br><br>
+							<span class="comment">*plots output</span>
+							<br>
+							plot v(out)<br><br>
+							.endc
+						</li>
+						<li id="8">
+							<span class="comment">*End of the code</span><br>
+							.end
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="column is-3-desktop is-10-tablet is-11-mobile center-content">
+			<div class="v-datalist-container">
+				<div class="v-datalist-title">
+					Observations
+				</div>
+				<div class="v-datalist-row">
+					<div id="result"></div>
+					<div id="obs-table">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const currentTab = { latch: 0};
+			window.selectedTab = parseInt(localStorage.getItem('selectedTab')) || currentTab.latch;
+
+			const updateCommentText = () => {
+				const commentSpan = document.getElementById('first_line');
+				commentSpan.textContent = (selectedTab === currentTab.latch) ? '* D_Latch *' : '';
+			};
+
+			const setInitialTab = () => {
+				const tabs = document.querySelectorAll('.v-tabs li');
+				tabs.forEach(item => item.classList.remove('is-active'));
+				tabs[selectedTab].classList.add('is-active');
+			};
+
+			updateCommentText();
+			setInitialTab();
+
+			const tabs = document.querySelectorAll('.v-tabs li');
+			tabs.forEach((tab, index) => {
+				tab.addEventListener('click', () => {
+					if (selectedTab !== index) {
+						localStorage.setItem('selectedTab', index);
+						location.reload();
+					}
+				});
+			});
+		});
+	</script>
+
+	<script src="./js/main.js" type="module"></script>
+	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+
+<script src="../assets/js/iframeResize.js"></script></body>
+</html>

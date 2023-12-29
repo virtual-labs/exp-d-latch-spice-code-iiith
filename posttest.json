@@ -1,0 +1,175 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "In an NGSPICE simulation of a D-Latch with pass transistor multiplexer, which statement correctly defines the pass transistor behavior?",
+      "answers": {
+        "a": "The pass transistors act as amplifiers.",
+        "b": "The pass transistors allow or block the flow of data based on the control signal.",
+        "c": "The pass transistors store data in the latch.",
+        "d": "The pass transistors control the clock signal."
+      },
+      "explanations": {
+        "a": "Pass transistors typically do not act as amplifiers in a D-Latch.",
+        "b": "Correct. Pass transistors in a multiplexer control the flow of data based on the control signal.",
+        "c": "Pass transistors do not store data; they enable data flow in the latch.",
+        "d": "The clock signal is not directly controlled by pass transistors; they are part of data selection."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In NGSPICE, how is the D-Latch clock signal usually defined in the simulation netlist?",
+      "answers": {
+        "a": "CLK = PULSE(0 1 0 1ns 1ns 1ns 2ns)",
+        "b": "CLK = VDD",
+        "c": "CLK = 1",
+        "d": "CLK = SIN(0 1 1GHz)"
+      },
+      "explanations": {
+        "a": "Correct. PULSE is commonly used to define clock signals in NGSPICE.",
+        "b": "Setting the clock signal to a constant voltage (VDD) is not typical in a D-Latch simulation.",
+        "c": "Assigning a constant value to CLK does not represent a realistic clock signal.",
+        "d": "SIN function is not commonly used to define clock signals in D-Latch simulations."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In NGSPICE, what does the '.tran' statement typically represent in a simulation netlist?",
+      "answers": {
+        "a": "Transient analysis duration",
+        "b": "Transistor parameters",
+        "c": "Transfer function",
+        "d": "Transistor type"
+      },
+      "explanations": {
+        "a": "Correct. '.tran' defines the duration of transient analysis in NGSPICE.",
+        "b": "Transistor parameters are usually defined separately, not in the '.tran' statement.",
+        "c": "Transfer function is not directly represented by the '.tran' statement.",
+        "d": "Transistor type is not specified in the '.tran' statement."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the purpose of including parasitic capacitance in the NGSPICE simulation of a D-Latch circuit?",
+      "answers": {
+        "a": "To slow down the clock signal",
+        "b": "To model the capacitance in the pass transistors",
+        "c": "To reduce power consumption",
+        "d": "To simplify the simulation"
+      },
+      "explanations": {
+        "a": "Including parasitic capacitance can affect performance, but it's not primarily to slow down the clock signal.",
+        "b": "Correct. Modeling parasitic capacitance is important for accurate simulation of the D-Latch circuit.",
+        "c": "Parasitic capacitance does not necessarily reduce power consumption; it's a factor to consider.",
+        "d": "Including parasitic capacitance adds realism to the simulation, not simplification."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How does the NGSPICE '.include' statement contribute to the simulation of a D-Latch circuit?",
+      "answers": {
+        "a": "It defines the clock signal",
+        "b": "It imports additional netlist files",
+        "c": "It specifies transistor parameters",
+        "d": "It sets up the transient analysis"
+      },
+      "explanations": {
+        "a": "The clock signal is typically defined using other statements, not '.include'.",
+        "b": "Correct. '.include' is used to import additional netlist files into the main simulation.",
+        "c": "Transistor parameters are usually specified directly, not through an '.include' statement.",
+        "d": "'.tran' statement is commonly used to set up transient analysis, not '.include'."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In NGSPICE, what is the significance of the '.options' statement in a simulation netlist?",
+      "answers": {
+        "a": "It defines the latch structure",
+        "b": "It sets simulation options and parameters",
+        "c": "It controls input selection",
+        "d": "It specifies transistor types"
+      },
+      "explanations": {
+        "a": "'.options' typically does not define the latch structure.",
+        "b": "Correct. '.options' is used to set various simulation options and parameters in NGSPICE.",
+        "c": "'.options' is not directly related to controlling input selection.",
+        "d": "'.options' does not specify transistor types; that is usually done elsewhere in the netlist."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How is the pass transistor multiplexer usually modeled in NGSPICE for a D-Latch circuit?",
+      "answers": {
+        "a": "Using behavioral voltage sources",
+        "b": "As a linear resistor",
+        "c": "With lumped capacitance",
+        "d": "As a behavioral current source"
+      },
+      "explanations": {
+        "a": "Correct. The pass transistor multiplexer is often modeled using behavioral voltage sources.",
+        "b": "Modeling as a linear resistor may oversimplify the behavior of the pass transistor multiplexer.",
+        "c": "Lumped capacitance is typically used to model capacitance, not pass transistors.",
+        "d": "Modeling as a behavioral current source may not capture the behavior of pass transistors accurately."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the role of the '.control' block in an NGSPICE simulation netlist?",
+      "answers": {
+        "a": "Defines the latch output",
+        "b": "Provides feedback to the pass transistors",
+        "c": "Specifies transient analysis parameters",
+        "d": "Allows customization and scripting of simulation"
+      },
+      "explanations": {
+        "a": "'.control' typically does not define the latch output.",
+        "b": "The '.control' block is not used to provide feedback to pass transistors.",
+        "c": "Transient analysis parameters are usually defined outside of the '.control' block.",
+        "d": "Correct. The '.control' block allows customization and scripting of the simulation in NGSPICE."
+      },
+      "correctAnswer": "d",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is the significance of the 'VDD' node in an NGSPICE simulation netlist of a D-Latch circuit?",
+      "answers": {
+        "a": "It represents the clock signal",
+        "b": "It defines the latch output",
+        "c": "It specifies the power supply voltage",
+        "d": "It controls the pass transistors"
+      },
+      "explanations": {
+        "a": "The 'VDD' node typically represents the power supply voltage, not the clock signal.",
+        "b": "The latch output is usually defined by the output node, not 'VDD'.",
+        "c": "Correct. 'VDD' is a common label for the power supply voltage in NGSPICE netlists.",
+        "d": "The 'VDD' node is not directly involved in controlling pass transistors."
+      },
+      "correctAnswer": "c",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "How does the NGSPICE '.measure' statement contribute to the analysis of a D-Latch simulation?",
+      "answers": {
+        "a": "It defines the latch output",
+        "b": "It provides feedback to the pass transistors",
+        "c": "It calculates specific circuit parameters during simulation",
+        "d": "It sets simulation options"
+      },
+      "explanations": {
+        "a": "'.measure' is not typically used to define the latch output directly.",
+        "b": "'.measure' is not used for providing feedback to pass transistors.",
+        "c": "Correct. '.measure' is used to calculate specific circuit parameters during simulation.",
+        "d": "'.measure' does not set simulation options; it is focused on post-simulation analysis."
+      },
+      "correctAnswer": "c",
+      "difficulty": "advanced"
+    }
+  ]
+}
