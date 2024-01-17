@@ -2,38 +2,174 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the primary purpose of a 2:1 multiplexer in a D-Latch circuit?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "To control the clock signal",
+        "b": "To select between two data inputs",
+        "c": "To amplify the output signal",
+        "d": "To store data in the latch"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "The 2:1 multiplexer is used to select between two data inputs based on the control signal.",
+        "b": "Correct. A 2:1 multiplexer is commonly used for data input selection in D-Latch circuits.",
+        "c": "The 2:1 multiplexer does not amplify the signal",
+        "d": "The latch stores data; the multiplexer controls input selection."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In a D-Latch circuit, what is the role of the clock signal?",
+      "answers": {
+        "a": "Controls input selection",
+        "b": "Enables data transfer",
+        "c": "Amplifies the output",
+        "d": "Stops the latch operation"
+      },
+      "explanations": {
+        "a": "The clock signal typically controls when data is transferred in the latch.",
+        "b": "Correct. The clock signal enables the transfer of data in a D-Latch.",
+        "c": "The clock signal does not amplify the output",
+        "d": "The clock signal is more involved in enabling operations, not stopping them."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the significance of the data inputs in a D-Latch?",
+      "answers": {
+        "a": "Determine the latch output",
+        "b": "Control the clock signal",
+        "c": "Activate the multiplexer",
+        "d": "Define the latch structure"
+      },
+      "explanations": {
+        "a": "Correct. The data inputs determine the output state of the latch.",
+        "b": "The data inputs do not control the clock signal; they contribute to the latch output.",
+        "c": "The data inputs do not activate the multiplexer; they are selected by it.",
+        "d": "The data inputs contribute to the latch behavior but don't define the structure."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "In a D-Latch circuit, what happens when the clock signal is low?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Latch is transparent",
+        "b": "Latch is latched",
+        "c": "Latch is cleared",
+        "d": "Latch is inverted"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Correct. When the clock signal is low, the D-Latch is in a transparent state.",
+        "b": "The latch is latched when the clock signal transitions from low to high.",
+        "c": "Clearing the latch typically involves a separate clear signal, not the clock.",
+        "d": "Inverting the latch output is not directly related to the clock signal."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the purpose of the feedback loop in a D-Latch?",
+      "answers": {
+        "a": "Increases clock speed",
+        "b": "Provides latch stability",
+        "c": "Reduces power consumption",
+        "d": "Controls input selection"
+      },
+      "explanations": {
+        "a": "The feedback loop is not primarily responsible for increasing clock speed.",
+        "b": "Correct. The feedback loop provides stability to the latch operation.",
+        "c": "Power consumption is not significantly influenced by the feedback loop.",
+        "d": "Input selection is controlled by the multiplexer, not the feedback loop."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How does a D-Latch differ from a D Flip-Flop?",
+      "answers": {
+        "a": "D-Latch has feedback, D Flip-Flop does not",
+        "b": "D-Latch is edge-triggered, D Flip-Flop is level-triggered",
+        "c": "D-Latch has one input, D Flip-Flop has two",
+        "d": "D-Latch and D Flip-Flop are functionally identical"
+      },
+      "explanations": {
+        "a": "Correct. D-Latch has a feedback loop, while D Flip-Flop does not.",
+        "b": "D-Latch is level-sensitive, while D Flip-Flop is edge-triggered.",
+        "c": "D-Latch typically has two inputs (D and CLK), similar to a D Flip-Flop.",
+        "d": "D-Latch and D Flip-Flop have distinct differences in their operation."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the purpose of the master-slave configuration in a D Flip-Flop?",
+      "answers": {
+        "a": "Increases clock speed",
+        "b": "Provides latch stability",
+        "c": "Reduces power consumption",
+        "d": "Prevents race conditions"
+      },
+      "explanations": {
+        "a": "Master-slave configuration is not primarily for increasing clock speed.",
+        "b": "Correct. The master-slave configuration provides stability and sequential operation.",
+        "c": "Power consumption is not significantly influenced by the master-slave configuration.",
+        "d": "Preventing race conditions is one of the roles of the master-slave configuration."
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In a D-Latch, what is the significance of the transparent state?",
+      "answers": {
+        "a": "Data input is ignored",
+        "b": "Data input is stored",
+        "c": "Data input passes through",
+        "d": "Data input is inverted"
+      },
+      "explanations": {
+        "a": "Data input in the transparent state is not ignored but affects the latch output.",
+        "b": "The data input is not stored in the transparent state; it passes through to the output.",
+        "c": "Correct. In the transparent state, the data input passes through to the latch output.",
+        "d": "Inverting the data input is not a characteristic of the transparent state."
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the purpose of the clock signal in a latch or flip-flop circuit?",
+      "answers": {
+        "a": "Controls input selection",
+        "b": "Enables data transfer",
+        "c": "Amplifies the output",
+        "d": "Stops the latch operation"
+      },
+      "explanations": {
+        "a": "The clock signal typically controls when data is transferred in the latch or flip-flop.",
+        "b": "Correct. The clock signal enables the transfer of data in latch or flip-flop circuits.",
+        "c": "The clock signal does not amplify the output; it triggers data transfer.",
+        "d": "The clock signal is more involved in enabling operations, not stopping them."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is the role of the asynchronous clear input in a D Flip-Flop?",
+      "answers": {
+        "a": "Stops the clock signal",
+        "b": "Resets the flip-flop to a known state",
+        "c": "Increases clock speed",
+        "d": "Inverts the output"
+      },
+      "explanations": {
+        "a": "The asynchronous clear input does not stop the clock signal.",
+        "b": "Correct. The asynchronous clear input resets the flip-flop to a known state.",
+        "c": "The asynchronous clear input is not related to increasing clock speed.",
+        "d": "Inverting the output is not a function of the asynchronous clear input."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
     }
   ]
 }
