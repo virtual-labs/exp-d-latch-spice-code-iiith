@@ -1,3 +1,3 @@
-1. To write and simulate spice codes for:  
-   i.To design a D-Latch using Pass Transistor Logic
-2. To write spice code for any transistor level schematic.
+1. To design a D-latch circuit using pass transistor logic.
+2. To implement the D-latch using SPICE netlist code.
+3. To analyze the level-triggered behavior of the D-latch through simulation.
