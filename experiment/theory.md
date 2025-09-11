@@ -1,4 +1,13 @@
-## D-Latch Fundamentals
+### D-Latch Fundamentals
+
+#### Transparency Property of D-Latch
+
+The transparency property of a D-Latch refers to its ability to allow the input data (D) to pass directly to the output (Q) when the clock (CLK) signal is active (typically high). In this transparent state, any changes in the input D are immediately reflected at the output Q. This property is crucial for temporary data storage and transfer in sequential circuits, as it enables the latch to act as a buffer when the clock is high. When the clock goes low, the latch becomes opaque, holding the last value of D and ignoring further changes until the clock is activated again.
+
+**Key Points:**
+
+- Transparent state: Q follows D when CLK is high.
+- Opaque (latched) state: Q holds its value when CLK is low.
 
 Latch is an electronic device that can be used to store one bit of information. The D latch is used to capture, or 'latch' the logic level which is present on the Data line when the clock input is high. If the data on the D line changes state while the clock pulse is high, then the output, Q, follows the input, D. When the CLK input falls to logic 0, the last state of the D input is trapped and held in the latch.
 
@@ -10,7 +19,7 @@ From the timing diagram it is clear that the output Q's waveform resembles that 
 
 **Note**: D-latch is a level triggering device.
 
-## SPICE - Introduction and Fundamentals
+### SPICE - Introduction and Fundamentals
 
 In the experiments we have done till now we have designed gates by arranging transistors in various fashions. The simulation of these designs gave graphs of output voltages and we analyzed how these graph changes with varying different parameters of the transistor. Now when you place a transistor on screen there is a back end code which tells a simulator what are the points to which the transistor's substrate, gate, drain, source are connected. The language in which this information is conveyed is spice.
 
@@ -33,7 +42,7 @@ Several types of circuit analyses can be done using SPICE program. Here are the 
 
 All analyses can be done at different temperatures. The default temperature is 300K.
 
-## SPICE Structure and Syntax
+### SPICE Structure and Syntax
 
 A spice input file, also called source file, consists of three parts:
 
@@ -93,7 +102,7 @@ The output variables are Y1, Y2 and can be voltage or currents in voltage source
 
 <img src="images/8.png" width="500">
 
-## SPICE Netlist Example - Inverter Circuit
+### SPICE Netlist Example - Inverter Circuit
 
 Complete example (Inverter-Netlist):
 
@@ -187,7 +196,7 @@ First line of spice code is always a comment. So this line is always ignored by 
 11. **.end**
     - Marks the end of the spice code.
 
-## D-Latch Implementation using Pass Transistor Logic
+### D-Latch Implementation using Pass Transistor Logic
 
 With the definition of D latch (given in the introduction) and the background knowledge of pass transistor (acquired in the previous experiments) let us design the transistor level diagram of D latch in this experiment. As mentioned earlier, when the clock is high the input D propagates to the output Q as it is and when the clock is low the output is held (irrespective of the changes in input D). This definition indicates that D latch can be implemented as a multiplexer with clock signal as the select input of multiplexer.
 
