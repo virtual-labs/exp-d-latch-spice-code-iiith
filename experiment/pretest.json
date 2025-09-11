@@ -10,10 +10,10 @@
         "d": "To store data in the latch"
       },
       "explanations": {
-        "a": "The 2:1 multiplexer is used to select between two data inputs based on the control signal.",
+        "a": "Incorrect. The 2:1 multiplexer is not used to control the clock signal; it selects between data inputs.",
         "b": "Correct. A 2:1 multiplexer is commonly used for data input selection in D-Latch circuits.",
-        "c": "The 2:1 multiplexer does not amplify the signal",
-        "d": "The latch stores data; the multiplexer controls input selection."
+        "c": "Incorrect. The 2:1 multiplexer does not amplify the output signal; it acts as a selector.",
+        "d": "Incorrect. The latch stores data; the multiplexer controls input selection."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -27,10 +27,10 @@
         "d": "Stops the latch operation"
       },
       "explanations": {
-        "a": "The clock signal typically controls when data is transferred in the latch.",
+        "a": "Incorrect. The clock signal does not control input selection; it enables data transfer.",
         "b": "Correct. The clock signal enables the transfer of data in a D-Latch.",
-        "c": "The clock signal does not amplify the output",
-        "d": "The clock signal is more involved in enabling operations, not stopping them."
+        "c": "Incorrect. The clock signal does not amplify the output; it triggers data transfer.",
+        "d": "Incorrect. The clock signal is more involved in enabling operations, not stopping them."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -45,9 +45,9 @@
       },
       "explanations": {
         "a": "Correct. The data inputs determine the output state of the latch.",
-        "b": "The data inputs do not control the clock signal; they contribute to the latch output.",
-        "c": "The data inputs do not activate the multiplexer; they are selected by it.",
-        "d": "The data inputs contribute to the latch behavior but don't define the structure."
+        "b": "Incorrect. The data inputs do not control the clock signal; they contribute to the latch output.",
+        "c": "Incorrect. The data inputs do not activate the multiplexer; they are selected by it.",
+        "d": "Incorrect. The data inputs contribute to the latch behavior but don't define the structure."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -61,12 +61,12 @@
         "d": "Latch is inverted"
       },
       "explanations": {
-        "a": "Correct. When the clock signal is low, the D-Latch is in a transparent state.",
-        "b": "The latch is latched when the clock signal transitions from low to high.",
-        "c": "Clearing the latch typically involves a separate clear signal, not the clock.",
-        "d": "Inverting the latch output is not directly related to the clock signal."
+        "a": "Incorrect. When the clock signal is low, the D-Latch is latched and holds its previous value.",
+        "b": "Correct. The latch is latched when the clock signal is low, holding the last data value.",
+        "c": "Incorrect. Clearing the latch typically involves a separate clear signal, not the clock.",
+        "d": "Incorrect. Inverting the latch output is not directly related to the clock signal."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
@@ -78,10 +78,10 @@
         "d": "Controls input selection"
       },
       "explanations": {
-        "a": "The feedback loop is not primarily responsible for increasing clock speed.",
-        "b": "Correct. The feedback loop provides stability to the latch operation.",
-        "c": "Power consumption is not significantly influenced by the feedback loop.",
-        "d": "Input selection is controlled by the multiplexer, not the feedback loop."
+        "a": "Incorrect. The feedback loop is not primarily responsible for increasing clock speed.",
+        "b": "Correct. The feedback loop provides stability to the latch operation, ensuring the output holds its value when required.",
+        "c": "Incorrect. Power consumption is not significantly influenced by the feedback loop.",
+        "d": "Incorrect. Input selection is controlled by the multiplexer, not the feedback loop."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
@@ -96,9 +96,9 @@
       },
       "explanations": {
         "a": "Correct. D-Latch has a feedback loop, while D Flip-Flop does not.",
-        "b": "D-Latch is level-sensitive, while D Flip-Flop is edge-triggered.",
-        "c": "D-Latch typically has two inputs (D and CLK), similar to a D Flip-Flop.",
-        "d": "D-Latch and D Flip-Flop have distinct differences in their operation."
+        "b": "Incorrect. D-Latch is level-sensitive, while D Flip-Flop is edge-triggered.",
+        "c": "Incorrect. D-Latch typically has two inputs (D and CLK), similar to a D Flip-Flop.",
+        "d": "Incorrect. D-Latch and D Flip-Flop have distinct differences in their operation."
       },
       "correctAnswer": "a",
       "difficulty": "intermediate"
@@ -112,10 +112,10 @@
         "d": "Prevents race conditions"
       },
       "explanations": {
-        "a": "Master-slave configuration is not primarily for increasing clock speed.",
-        "b": "Correct. The master-slave configuration provides stability and sequential operation.",
-        "c": "Power consumption is not significantly influenced by the master-slave configuration.",
-        "d": "Preventing race conditions is one of the roles of the master-slave configuration."
+        "a": "Incorrect. Master-slave configuration is not primarily for increasing clock speed.",
+        "b": "Incorrect. The master-slave configuration provides stability and sequential operation, but its main purpose is to prevent race conditions.",
+        "c": "Incorrect. Power consumption is not significantly influenced by the master-slave configuration.",
+        "d": "Correct. Preventing race conditions is one of the main roles of the master-slave configuration."
       },
       "correctAnswer": "d",
       "difficulty": "intermediate"
@@ -129,10 +129,10 @@
         "d": "Data input is inverted"
       },
       "explanations": {
-        "a": "Data input in the transparent state is not ignored but affects the latch output.",
-        "b": "The data input is not stored in the transparent state; it passes through to the output.",
+        "a": "Incorrect. Data input in the transparent state is not ignored but affects the latch output.",
+        "b": "Incorrect. The data input is not stored in the transparent state; it passes through to the output.",
         "c": "Correct. In the transparent state, the data input passes through to the latch output.",
-        "d": "Inverting the data input is not a characteristic of the transparent state."
+        "d": "Incorrect. Inverting the data input is not a characteristic of the transparent state."
       },
       "correctAnswer": "c",
       "difficulty": "intermediate"
@@ -146,10 +146,10 @@
         "d": "Stops the latch operation"
       },
       "explanations": {
-        "a": "The clock signal typically controls when data is transferred in the latch or flip-flop.",
+        "a": "Incorrect. The clock signal does not control input selection; it enables data transfer.",
         "b": "Correct. The clock signal enables the transfer of data in latch or flip-flop circuits.",
-        "c": "The clock signal does not amplify the output; it triggers data transfer.",
-        "d": "The clock signal is more involved in enabling operations, not stopping them."
+        "c": "Incorrect. The clock signal does not amplify the output; it triggers data transfer.",
+        "d": "Incorrect. The clock signal is more involved in enabling operations, not stopping them."
       },
       "correctAnswer": "b",
       "difficulty": "advanced"
@@ -163,10 +163,10 @@
         "d": "Inverts the output"
       },
       "explanations": {
-        "a": "The asynchronous clear input does not stop the clock signal.",
-        "b": "Correct. The asynchronous clear input resets the flip-flop to a known state.",
-        "c": "The asynchronous clear input is not related to increasing clock speed.",
-        "d": "Inverting the output is not a function of the asynchronous clear input."
+        "a": "Incorrect. The asynchronous clear input does not stop the clock signal; it resets the flip-flop.",
+        "b": "Correct. The asynchronous clear input resets the flip-flop to a known state, regardless of the clock.",
+        "c": "Incorrect. The asynchronous clear input is not related to increasing clock speed.",
+        "d": "Incorrect. Inverting the output is not a function of the asynchronous clear input."
       },
       "correctAnswer": "b",
       "difficulty": "advanced"

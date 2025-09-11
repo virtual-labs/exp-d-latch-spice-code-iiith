@@ -10,10 +10,10 @@
         "d": "The pass transistors control the clock signal."
       },
       "explanations": {
-        "a": "Pass transistors typically do not act as amplifiers in a D-Latch.",
-        "b": "Correct. Pass transistors in a multiplexer control the flow of data based on the control signal.",
-        "c": "Pass transistors do not store data; they enable data flow in the latch.",
-        "d": "The clock signal is not directly controlled by pass transistors; they are part of data selection."
+        "a": "Incorrect. Pass transistors typically do not act as amplifiers in a D-Latch; they act as switches.",
+        "b": "Correct. Pass transistors in a multiplexer control the flow of data based on the control signal, enabling or blocking data transfer.",
+        "c": "Incorrect. Pass transistors do not store data; they enable data flow in the latch.",
+        "d": "Incorrect. The clock signal is not directly controlled by pass transistors; they are part of data selection."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -27,10 +27,10 @@
         "d": "CLK = SIN(0 1 1GHz)"
       },
       "explanations": {
-        "a": "Correct. PULSE is commonly used to define clock signals in NGSPICE.",
-        "b": "Setting the clock signal to a constant voltage (VDD) is not typical in a D-Latch simulation.",
-        "c": "Assigning a constant value to CLK does not represent a realistic clock signal.",
-        "d": "SIN function is not commonly used to define clock signals in D-Latch simulations."
+        "a": "Correct. PULSE is commonly used to define clock signals in NGSPICE, allowing for realistic timing analysis.",
+        "b": "Incorrect. Setting the clock signal to a constant voltage (VDD) is not typical in a D-Latch simulation.",
+        "c": "Incorrect. Assigning a constant value to CLK does not represent a realistic clock signal.",
+        "d": "Incorrect. SIN function is not commonly used to define clock signals in D-Latch simulations; it is used for AC analysis."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -44,10 +44,10 @@
         "d": "Transistor type"
       },
       "explanations": {
-        "a": "Correct. '.tran' defines the duration of transient analysis in NGSPICE.",
-        "b": "Transistor parameters are usually defined separately, not in the '.tran' statement.",
-        "c": "Transfer function is not directly represented by the '.tran' statement.",
-        "d": "Transistor type is not specified in the '.tran' statement."
+        "a": "Correct. '.tran' defines the duration and time steps for transient analysis in NGSPICE, allowing observation of circuit behavior over time.",
+        "b": "Incorrect. Transistor parameters are usually defined separately, not in the '.tran' statement.",
+        "c": "Incorrect. Transfer function is not directly represented by the '.tran' statement.",
+        "d": "Incorrect. Transistor type is not specified in the '.tran' statement."
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -61,10 +61,10 @@
         "d": "To simplify the simulation"
       },
       "explanations": {
-        "a": "Including parasitic capacitance can affect performance, but it's not primarily to slow down the clock signal.",
-        "b": "Correct. Modeling parasitic capacitance is important for accurate simulation of the D-Latch circuit.",
-        "c": "Parasitic capacitance does not necessarily reduce power consumption; it's a factor to consider.",
-        "d": "Including parasitic capacitance adds realism to the simulation, not simplification."
+        "a": "Incorrect. Including parasitic capacitance can affect performance, but it's not primarily to slow down the clock signal.",
+        "b": "Correct. Modeling parasitic capacitance is important for accurate simulation of the D-Latch circuit, as it impacts speed and signal integrity.",
+        "c": "Incorrect. Parasitic capacitance does not necessarily reduce power consumption; it's a factor to consider for timing and performance.",
+        "d": "Incorrect. Including parasitic capacitance adds realism to the simulation, not simplification."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
@@ -78,10 +78,10 @@
         "d": "It sets up the transient analysis"
       },
       "explanations": {
-        "a": "The clock signal is typically defined using other statements, not '.include'.",
-        "b": "Correct. '.include' is used to import additional netlist files into the main simulation.",
-        "c": "Transistor parameters are usually specified directly, not through an '.include' statement.",
-        "d": "'.tran' statement is commonly used to set up transient analysis, not '.include'."
+        "a": "Incorrect. The clock signal is typically defined using other statements, not '.include'.",
+        "b": "Correct. '.include' is used to import additional netlist files into the main simulation, such as model files for transistors.",
+        "c": "Incorrect. Transistor parameters are usually specified directly, not through an '.include' statement.",
+        "d": "Incorrect. '.tran' statement is commonly used to set up transient analysis, not '.include'."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
@@ -95,10 +95,10 @@
         "d": "It specifies transistor types"
       },
       "explanations": {
-        "a": "'.options' typically does not define the latch structure.",
-        "b": "Correct. '.options' is used to set various simulation options and parameters in NGSPICE.",
-        "c": "'.options' is not directly related to controlling input selection.",
-        "d": "'.options' does not specify transistor types; that is usually done elsewhere in the netlist."
+        "a": "Incorrect. '.options' typically does not define the latch structure; it configures simulation settings.",
+        "b": "Correct. '.options' is used to set various simulation options and parameters in NGSPICE, such as output format and accuracy.",
+        "c": "Incorrect. '.options' is not directly related to controlling input selection.",
+        "d": "Incorrect. '.options' does not specify transistor types; that is usually done elsewhere in the netlist."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
@@ -112,10 +112,10 @@
         "d": "As a behavioral current source"
       },
       "explanations": {
-        "a": "Correct. The pass transistor multiplexer is often modeled using behavioral voltage sources.",
-        "b": "Modeling as a linear resistor may oversimplify the behavior of the pass transistor multiplexer.",
-        "c": "Lumped capacitance is typically used to model capacitance, not pass transistors.",
-        "d": "Modeling as a behavioral current source may not capture the behavior of pass transistors accurately."
+        "a": "Correct. The pass transistor multiplexer is often modeled using behavioral voltage sources, which can accurately represent switching behavior.",
+        "b": "Incorrect. Modeling as a linear resistor may oversimplify the behavior of the pass transistor multiplexer.",
+        "c": "Incorrect. Lumped capacitance is typically used to model capacitance, not pass transistors.",
+        "d": "Incorrect. Modeling as a behavioral current source may not capture the behavior of pass transistors accurately."
       },
       "correctAnswer": "a",
       "difficulty": "intermediate"
@@ -129,10 +129,10 @@
         "d": "Allows customization and scripting of simulation"
       },
       "explanations": {
-        "a": "'.control' typically does not define the latch output.",
-        "b": "The '.control' block is not used to provide feedback to pass transistors.",
-        "c": "Transient analysis parameters are usually defined outside of the '.control' block.",
-        "d": "Correct. The '.control' block allows customization and scripting of the simulation in NGSPICE."
+        "a": "Incorrect. '.control' typically does not define the latch output; it is used for simulation scripting.",
+        "b": "Incorrect. The '.control' block is not used to provide feedback to pass transistors.",
+        "c": "Incorrect. Transient analysis parameters are usually defined outside of the '.control' block.",
+        "d": "Correct. The '.control' block allows customization and scripting of the simulation in NGSPICE, such as automated measurements and output control."
       },
       "correctAnswer": "d",
       "difficulty": "advanced"
@@ -146,10 +146,10 @@
         "d": "It controls the pass transistors"
       },
       "explanations": {
-        "a": "The 'VDD' node typically represents the power supply voltage, not the clock signal.",
-        "b": "The latch output is usually defined by the output node, not 'VDD'.",
-        "c": "Correct. 'VDD' is a common label for the power supply voltage in NGSPICE netlists.",
-        "d": "The 'VDD' node is not directly involved in controlling pass transistors."
+        "a": "Incorrect. The 'VDD' node typically represents the power supply voltage, not the clock signal.",
+        "b": "Incorrect. The latch output is usually defined by the output node, not 'VDD'.",
+        "c": "Correct. 'VDD' is a common label for the power supply voltage in NGSPICE netlists, providing power to all circuit elements.",
+        "d": "Incorrect. The 'VDD' node is not directly involved in controlling pass transistors."
       },
       "correctAnswer": "c",
       "difficulty": "advanced"
@@ -163,12 +163,63 @@
         "d": "It sets simulation options"
       },
       "explanations": {
-        "a": "'.measure' is not typically used to define the latch output directly.",
-        "b": "'.measure' is not used for providing feedback to pass transistors.",
-        "c": "Correct. '.measure' is used to calculate specific circuit parameters during simulation.",
-        "d": "'.measure' does not set simulation options; it is focused on post-simulation analysis."
+        "a": "Incorrect. '.measure' is not typically used to define the latch output directly; it is used for analysis.",
+        "b": "Incorrect. '.measure' is not used for providing feedback to pass transistors.",
+        "c": "Correct. '.measure' is used to calculate specific circuit parameters during simulation, such as propagation delay or setup time.",
+        "d": "Incorrect. '.measure' does not set simulation options; it is focused on post-simulation analysis."
       },
       "correctAnswer": "c",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What happens if the clock signal in a D-Latch circuit glitches (briefly goes high then low)?",
+      "answers": {
+        "a": "Latch may capture unintended data",
+        "b": "Latch output remains unchanged",
+        "c": "Latch output is always reset",
+        "d": "Latch enters a transparent state permanently"
+      },
+      "explanations": {
+        "a": "Correct. A clock glitch can cause the latch to capture unintended data, leading to unpredictable output.",
+        "b": "Incorrect. The output may change if the glitch occurs during a data transition.",
+        "c": "Incorrect. The output is not always reset by a clock glitch.",
+        "d": "Incorrect. The latch does not remain permanently transparent due to a glitch."
+      },
+      "correctAnswer": "a",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "If the data input changes just as the clock transitions from high to low, what is the expected output of the D-Latch?",
+      "answers": {
+        "a": "Output may be metastable",
+        "b": "Output always follows the new data",
+        "c": "Output always holds the previous data",
+        "d": "Output is undefined"
+      },
+      "explanations": {
+        "a": "Correct. If data changes at the clock edge, the output may become metastable or unpredictable.",
+        "b": "Incorrect. The output does not always follow the new data in this scenario.",
+        "c": "Incorrect. The output may not reliably hold the previous data if the transition is not clean.",
+        "d": "Incorrect. While the output may be unpredictable, it is not strictly undefined; it may be metastable."
+      },
+      "correctAnswer": "a",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is the effect of a slow clock edge (slow rise/fall time) on the operation of a D-Latch?",
+      "answers": {
+        "a": "Latch may become transparent for longer than intended",
+        "b": "Latch output is unaffected",
+        "c": "Latch always resets",
+        "d": "Latch output is inverted"
+      },
+      "explanations": {
+        "a": "Correct. A slow clock edge can cause the latch to remain transparent longer, increasing risk of unintended data capture.",
+        "b": "Incorrect. The output can be affected by slow clock edges.",
+        "c": "Incorrect. The latch does not always reset due to slow clock edges.",
+        "d": "Incorrect. The output is not inverted by slow clock edges."
+      },
+      "correctAnswer": "a",
       "difficulty": "advanced"
     }
   ]
