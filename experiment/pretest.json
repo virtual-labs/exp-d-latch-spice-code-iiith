@@ -89,16 +89,16 @@
     {
       "question": "How does a D-Latch differ from a D Flip-Flop?",
       "answers": {
-        "a": "D-Latch has feedback, D Flip-Flop does not",
-        "b": "D-Latch is edge-triggered, D Flip-Flop is level-triggered",
+        "a": "D-Latch is level-triggered, D Flip-Flop is edge-triggered",
+        "b": "D-Latch has feedback, D Flip-Flop does not",
         "c": "D-Latch has one input, D Flip-Flop has two",
         "d": "D-Latch and D Flip-Flop are functionally identical"
       },
       "explanations": {
-        "a": "Correct. D-Latch has a feedback loop, while D Flip-Flop does not.",
-        "b": "Incorrect. D-Latch is level-sensitive, while D Flip-Flop is edge-triggered.",
-        "c": "Incorrect. D-Latch typically has two inputs (D and CLK), similar to a D Flip-Flop.",
-        "d": "Incorrect. D-Latch and D Flip-Flop have distinct differences in their operation."
+        "a": "Correct. D-Latch is level-triggered (transparent when clock is high), while D Flip-Flop is edge-triggered (changes state only on clock edge).",
+        "b": "Incorrect. Both D-Latch and D Flip-Flop have internal feedback loops.",
+        "c": "Incorrect. Both typically have two inputs (D and CLK).",
+        "d": "Incorrect. They have distinct differences in their operation."
       },
       "correctAnswer": "a",
       "difficulty": "intermediate"

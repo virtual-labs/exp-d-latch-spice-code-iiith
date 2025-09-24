@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 import { isFilled, isValid, printObsTable } from "./validator.js";
 
 window.ValidateCode = ValidateCode;
@@ -6,87 +6,97 @@ window.refreshWorkingArea = refreshWorkingArea;
 window.viewModelFile = viewModelFile;
 
 function enableDragSort(listClass) {
-    const sortableLists = document.getElementsByClassName(listClass);
-    Array.prototype.map.call(sortableLists, (list) => { enableDragList(list) });
+  const sortableLists = document.getElementsByClassName(listClass);
+  Array.prototype.map.call(sortableLists, (list) => {
+    enableDragList(list);
+  });
 
-    // Shuffle boxes randomly
-    Array.prototype.map.call(sortableLists, (list) => {
-        const boxes = Array.from(list.children);
-        shuffleArray(boxes);
-        boxes.forEach((box) => list.appendChild(box));
-    });
+  // Shuffle boxes randomly
+  Array.prototype.map.call(sortableLists, (list) => {
+    const boxes = Array.from(list.children);
+    shuffleArray(boxes);
+    boxes.forEach((box) => list.appendChild(box));
+  });
 }
 
 export function refreshWorkingArea() {
-    enableDragSort('drag-sort-enable');
-    refreshObservations();
+  enableDragSort("drag-sort-enable");
+  refreshObservations();
 }
 
 export function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 export function enableDragList(list) {
-    Array.prototype.map.call(list.children, (item) => { enableDragItem(item) });
+  Array.prototype.map.call(list.children, (item) => {
+    enableDragItem(item);
+  });
 }
 
 export function enableDragItem(item) {
-    item.setAttribute('draggable', true)
-    item.ondrag = handleDrag;
-    item.ondragend = handleDrop;
+  item.setAttribute("draggable", true);
+  item.ondrag = handleDrag;
+  item.ondragend = handleDrop;
 }
 
 export function handleDrag(event) {
-    const selectedItem = event.target,
-        list = selectedItem.parentNode,
-        x = event.clientX,
-        y = event.clientY;
+  const selectedItem = event.target,
+    list = selectedItem.parentNode,
+    x = event.clientX,
+    y = event.clientY;
 
-    selectedItem.classList.add('drag-sort-active');
-    let swapItem = document.elementFromPoint(x, y) === null ? selectedItem : document.elementFromPoint(x, y);
+  selectedItem.classList.add("drag-sort-active");
+  let swapItem =
+    document.elementFromPoint(x, y) === null
+      ? selectedItem
+      : document.elementFromPoint(x, y);
 
-    if (list === swapItem.parentNode) {
-        swapItem = swapItem !== selectedItem.nextSibling ? swapItem : swapItem.nextSibling;
-        list.insertBefore(selectedItem, swapItem);
-    }
+  if (list === swapItem.parentNode) {
+    swapItem =
+      swapItem !== selectedItem.nextSibling ? swapItem : swapItem.nextSibling;
+    list.insertBefore(selectedItem, swapItem);
+  }
 }
 
 export function handleDrop(item) {
-    item.target.classList.remove('drag-sort-active');
-    const boxOrder1 = getBoxOrder('module');
-    const boxOrder2 = getBoxOrder('tb');
-    console.log('List 1 order:', boxOrder1);
-    console.log('List 2 order:', boxOrder2);
+  item.target.classList.remove("drag-sort-active");
+  const boxOrder = getBoxOrder("spice-code");
+  //console.log("Spice code block order:", boxOrder);
 }
 
 export function getBoxOrder(listId) {
-    const list = document.getElementById(listId);
-    const boxOrder = Array.from(list.children).map((item) => item.id);
-    return boxOrder;
+  const list = document.getElementById(listId);
+  if (!list) {
+    console.warn(`getBoxOrder: Element with id '${listId}' not found.`);
+    return [];
+  }
+  const boxOrder = Array.from(list.children).map((item) => item.id);
+  return boxOrder;
 }
 
 export function refreshObservations() {
-    document.getElementById('obs-table').innerHTML = "";
-    document.getElementById('result').innerHTML = "";
+  document.getElementById("obs-table").innerHTML = "";
+  document.getElementById("result").innerHTML = "";
 }
 
 export function ValidateCode() {
+  refreshObservations();
+  if (isFilled()) {
     refreshObservations();
-    if (isFilled()) {
-        refreshObservations();
-        if (isValid()) {
-            refreshObservations();
-            // print success/failure message and report, waveforms
-            printObsTable();
-        }
-        return;
+    if (isValid()) {
+      refreshObservations();
+      // print success/failure message and report, waveforms
+      printObsTable();
     }
+    return;
+  }
 }
 export function viewModelFile() {
-    const PTM_45nm = `* PTM Low Power 45nm Metal Gate / High-K / Strained-Si
+  const PTM_45nm = `* PTM Low Power 45nm Metal Gate / High-K / Strained-Si
 * nominal Vdd = 1.1V
 
 .model  nmos  nmos  level = 54
@@ -226,12 +236,17 @@ export function viewModelFile() {
 +rshg    = 0.4             gbmin   = 1e-010          rbpb    = 5               rbpd    = 15            
 +rbps    = 15              rbdb    = 15              rbsb    = 15              ngcon   = 1`;
 
-    // Open a new pop-up window
-    const popupWindow = window.open('', '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+  // Open a new pop-up window
+  const popupWindow = window.open(
+    "",
+    "_blank",
+    "width=600,height=400,scrollbars=yes,resizable=yes"
+  );
 
-    // Write the PTM content into the pop-up window
-    popupWindow.document.write('<pre>' + PTM_45nm + '</pre>');
-
+  // Write the PTM content into the pop-up window
+  popupWindow.document.write("<pre>" + PTM_45nm + "</pre>");
 }
 
-(() => { refreshWorkingArea() })();
+(() => {
+  refreshWorkingArea();
+})();
