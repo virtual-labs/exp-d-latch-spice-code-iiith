@@ -1,0 +1,6 @@
+
+/home/runner/work/exp-d-latch-spice-code-iiith/exp-d-latch-spice-code-iiith/experiment/simulation/js/main.js
+  67:9  warning  'boxOrder' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
